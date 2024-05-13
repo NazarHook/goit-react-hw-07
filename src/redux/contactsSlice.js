@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchContacts, addContact, deleteContact } from './operations'
+import { fetchContacts, addContact, deleteContact } from './contactsOps'
 
 const handlePending = (state) => {
 state.loading = true
@@ -21,7 +21,9 @@ const slice = createSlice({
         .addCase(fetchContacts.pending, handlePending)
         .addCase(fetchContacts.fulfilled, (state, action) => {
             state.loading = true
-            state.items = action.payload
+            if (action.payload.length > 0) {
+                state.items = action.payload
+            } 
             state.loading = false
         })
         .addCase(fetchContacts.rejected, handleRejected)

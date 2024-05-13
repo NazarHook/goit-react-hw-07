@@ -2,7 +2,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { nanoid } from 'nanoid'
 import css from './ContactForm.module.css'
 import * as Yup from 'yup'
-import { addContact } from '../../redux/contacts/operations';
+import { addContact } from '../../redux/contactsOps';
 import { useDispatch } from 'react-redux';
 const nameId = nanoid()
 const numberId = nanoid()

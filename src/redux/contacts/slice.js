@@ -22,18 +22,21 @@ const slice = createSlice({
         .addCase(fetchContacts.fulfilled, (state, action) => {
             state.loading = true
             state.items = action.payload
+            state.loading = false
         })
         .addCase(fetchContacts.rejected, handleRejected)
         .addCase(addContact.pending, handlePending)
         .addCase(addContact.fulfilled, (state, action) => {
             state.loading = true
          state.items.push(action.payload)
+         state.loading = false
         })
         .addCase(addContact.rejected, handleRejected)
         .addCase(deleteContact.pending, handlePending)
         .addCase(deleteContact.fulfilled, (state, action) => {
             state.loading = true
         state.items = state.items.filter(contact => contact.id !== action.payload)
+        state.loading = false
         })
         .addCase(deleteContact.rejected, handleRejected)
         
